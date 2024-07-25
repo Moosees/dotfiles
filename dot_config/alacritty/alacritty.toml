@@ -1,0 +1,35 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml",
+]
+
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "None"
+startup_mode = "Maximized"
+option_as_alt = "OnlyRight"
+
+[font]
+normal = { family = "ZedMono Nerd Font", style = "Regular" }
+size = 11
+
+[keyboard]
+bindings = [
+  {key = "ö", chars = "["},
+  {key = "ö", mods = "Shift", chars = "{"},
+  {key = "ö", mods = "Option", chars = "ö"},
+  {key = "ö", mods = "Command", chars = "Ö"},
+  {key = "ä", chars = "]"},
+  {key = "ä", mods = "Shift", chars = "}"},
+  {key = "ä", mods = "Option", chars = "ä"},
+  {key = "ä", mods = "Command", chars = "Ä"},
+  {key = "å", chars = "\\"},
+  {key = "å", mods = "Shift", chars = "%"},
+  {key = "å", mods = "Option", chars = "å"},
+  {key = "å", mods = "Command", chars = "Å"},
+  {key = "<", mods = "Option", chars = "/"},
+]
+
