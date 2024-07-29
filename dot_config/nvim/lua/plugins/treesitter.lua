@@ -2,19 +2,25 @@ return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   -- lazy = true,
   -- build = ':TSUpdate',
-  -- opts = {
-  --   ensure_installed = { 'bash', 'c', 'query', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'javascript', 'typescript', 'tsx', 'json5' },
-  --   -- Autoinstall languages that are not installed
-  --   auto_install = true,
-  --   highlight = {
-  --     enable = true,
-  --     -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-  --     --  If you are experiencing weird indenting issues, add the language to
-  --     --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-  --     additional_vim_regex_highlighting = { 'ruby' },
-  --   },
-  --   indent = { enable = true, disable = { 'ruby' } },
-  -- },
+  opts = {
+    --   ensure_installed = { 'bash', 'c', 'query', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'javascript', 'typescript', 'tsx', 'json5' },
+    --   -- Autoinstall languages that are not installed
+    --   auto_install = true,
+    highlight = {
+      --     enable = true,
+      --     -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+      --     --  If you are experiencing weird indenting issues, add the language to
+      --     --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+      --     additional_vim_regex_highlighting = { 'ruby' },
+      disable = function()
+        -- check if 'filetype' option includes 'chezmoitmpl'
+        if string.find(vim.bo.filetype, 'chezmoitmpl') then
+          return true
+        end
+      end,
+    },
+    --   indent = { enable = true, disable = { 'ruby' } },
+  },
   -- config = function(_, opts)
   --   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
   --
