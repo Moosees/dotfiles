@@ -43,7 +43,8 @@ return { -- Autoformat
       -- python = { "isort", "black" },
       -- You can use a sub-list to tell conform to run *until* a formatter is found.
       -- javascript = { { 'prettierd', 'prettier' }, { 'eslint_d','eslint' } },
-      javascript = { 'prettier', 'eslint' },
+      -- javascript = { 'prettier', 'eslint' },
+      -- javascriptreact = { 'prettier', 'eslint' },
       -- markdown = { 'markdownlint' },
       ['markdown'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
       ['markdown.mdx'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
