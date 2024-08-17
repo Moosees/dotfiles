@@ -161,6 +161,7 @@ return {
         'json-lsp',
         'markdownlint-cli2',
         'markdown-toc',
+        'emmet-language-server',
       },
     },
   },
