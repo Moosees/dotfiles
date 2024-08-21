@@ -132,8 +132,6 @@ return {
       ensure_installed = {
         'stylua',
         -- 'shfmt',
-        'markdownlint-cli2',
-        'markdown-toc',
         'emmet-language-server',
       },
     },
