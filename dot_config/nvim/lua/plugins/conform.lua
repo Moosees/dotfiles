@@ -48,7 +48,6 @@ return { -- Autoformat
       -- markdown = { 'markdownlint' },
       ['markdown'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
       ['markdown.mdx'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
-      json = { 'jsonls' },
       -- :ConformInfo for debugging
     },
   },

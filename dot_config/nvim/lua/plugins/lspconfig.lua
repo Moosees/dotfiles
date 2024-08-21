@@ -25,7 +25,6 @@ return {
           table.insert(opts.sources, { name = 'lazydev', group_index = 0 })
         end,
       },
-      { 'b0o/SchemaStore.nvim', version = false, lazy = true },
     },
     opts = {
       -- options for vim.diagnostic.config()
@@ -114,31 +113,6 @@ return {
             },
           },
         },
-        jsonls = {
-          -- lazy-load schemastore when needed
-          on_new_config = function(new_config)
-            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-            vim.list_extend(new_config.settings.json.schemas, require('schemastore').json.schemas())
-          end,
-          settings = {
-            json = {
-              format = {
-                enable = true,
-              },
-              validate = { enable = true },
-            },
-          },
-        },
-        -- yaml = {
-        --   schemaStore = {
-        --     -- You must disable built-in schemaStore support if you want to use
-        --     -- this plugin and its advanced options like `ignore`.
-        --     enable = false,
-        --     -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-        --     url = '',
-        --   },
-        --   schemas = require('schemastore').yaml.schemas(),
-        -- },
         eslint = {
           enable = false,
           settings = {
@@ -158,7 +132,6 @@ return {
       ensure_installed = {
         'stylua',
         -- 'shfmt',
-        'json-lsp',
         'markdownlint-cli2',
         'markdown-toc',
         'emmet-language-server',
