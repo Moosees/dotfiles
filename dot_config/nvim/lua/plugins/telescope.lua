@@ -19,6 +19,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
+  keys = {
+    { '<leader>sR', false },
+  },
 
   config = function()
     -- The easiest way to use Telescope, is to start by doing something like: :Telescope help_tags
