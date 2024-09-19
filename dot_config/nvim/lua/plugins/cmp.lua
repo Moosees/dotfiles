@@ -11,7 +11,6 @@ return {
   opts = function()
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
     local cmp = require 'cmp'
-    local defaults = require 'cmp.config.default'()
     local auto_select = true
     return {
       -- Not all LSP servers add brackets when completing a function.
@@ -28,9 +27,10 @@ return {
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-Tab>'] = cmp.mapping.complete(),
+        ['<C-Space>'] = cmp.mapping.complete(),
         -- ['<CR>'] = LazyVim.cmp.confirm { select = auto_select },
-        ['<C-y>'] = LazyVim.cmp.confirm { select = true },
+        -- ['<C-y>'] = LazyVim.cmp.confirm { select = true },
+        ['<C-y>'] = LazyVim.cmp.confirm { select = auto_select },
         -- ['<S-CR>'] = LazyVim.cmp.confirm { behavior = cmp.ConfirmBehavior.Replace }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         -- ['<C-CR>'] = function(fallback)
         --   cmp.abort()
@@ -39,12 +39,7 @@ return {
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
-      sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'path' },
-      }, {
-        { name = 'buffer' },
-      }),
+      sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'path' } }, { { name = 'buffer' } }, { name = 'snippets' }),
       formatting = {
         format = function(entry, item)
           local icons = LazyVim.config.icons.kinds
@@ -71,7 +66,20 @@ return {
           hl_group = 'CmpGhostText',
         },
       },
-      sorting = defaults.sorting,
+      -- sorting = cmp.config.default.sorting,
+      -- sorting = {
+      --   comparators = {
+      --     cmp.config.compare.offset,
+      --     cmp.config.compare.exact,
+      --     cmp.config.compare.score,
+      --     cmp.config.compare.recently_used,
+      --     cmp.config.compare.locality,
+      --     cmp.config.compare.kind,
+      --     cmp.config.compare.sort_text,
+      --     cmp.config.compare.length,
+      --     cmp.config.compare.order,
+      --   },
+      -- },
     }
   end,
   main = 'lazyvim.util.cmp',
