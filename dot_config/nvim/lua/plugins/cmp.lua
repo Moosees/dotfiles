@@ -8,6 +8,7 @@ return {
     'hrsh7th/cmp-path',
     { 'garymjr/nvim-snippets', opts = { friendly_snippets = true }, dependencies = { 'rafamadriz/friendly-snippets' } },
     { 'roobert/tailwindcss-colorizer-cmp.nvim', opts = {} },
+    'lukas-reineke/cmp-under-comparator',
   },
   opts = function()
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
@@ -37,7 +38,20 @@ return {
         --   fallback()
         -- end,
       },
-      sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'path' }, { name = 'snippets' } }, { { name = 'buffer' } }),
+      sources = cmp.config.sources({
+        { name = 'path' },
+        { name = 'snippets' },
+        {
+          name = 'nvim_lsp',
+          keyword_length = 3,
+          -- entry_filter = function(entry)
+          --   -- return false for any kinds that should not show up
+          --   -- see end of file for map of kinds
+          --   vim.print(entry:get_kind())
+          --   return true
+          -- end,
+        },
+      }, { { name = 'buffer' } }),
       formatting = {
         format = function(_, item)
           local icons = LazyVim.config.icons.kinds
@@ -65,19 +79,47 @@ return {
         },
       },
       sorting = {
+        -- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/compare.lua
         comparators = {
           cmp.config.compare.offset,
           cmp.config.compare.exact,
-          cmp.config.compare.score,
           cmp.config.compare.recently_used,
-          cmp.config.compare.locality,
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
+          cmp.config.compare.score,
+          require('cmp-under-comparator').under,
           cmp.config.compare.order,
+          -- cmp.config.compare.locality,
+          -- cmp.config.compare.kind,
+          -- cmp.config.compare.sort_text,
+          -- cmp.config.compare.length,
         },
       },
     }
   end,
   main = 'lazyvim.util.cmp',
 }
+
+-- export const Text = 1;
+-- export const Method = 2;
+-- export const Function = 3;
+-- export const Constructor = 4;
+-- export const Field = 5;
+-- export const Variable = 6;
+-- export const Class = 7;
+-- export const Interface = 8;
+-- export const Module = 9;
+-- export const Property = 10;
+-- export const Unit = 11;
+-- export const Value = 12;
+-- export const Enum = 13;
+-- export const Keyword = 14;
+-- export const Snippet = 15;
+-- export const Color = 16;
+-- export const File = 17;
+-- export const Reference = 18;
+-- export const Folder = 19;
+-- export const EnumMember = 20;
+-- export const Constant = 21;
+-- export const Struct = 22;
+-- export const Event = 23;
+-- export const Operator = 24;
+-- export const TypeParameter = 25;
