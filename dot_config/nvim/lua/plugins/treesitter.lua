@@ -6,6 +6,8 @@ return { -- Highlight, edit, and navigate code
     --   ensure_installed = { 'bash', 'c', 'query', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'javascript', 'typescript', 'tsx', 'json5' },
     --   -- Autoinstall languages that are not installed
     --   auto_install = true,
+    -- To turn off <c-space> behaviour
+    -- incremental_selection = { enable = false },
     highlight = {
       --     enable = true,
       --     -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.

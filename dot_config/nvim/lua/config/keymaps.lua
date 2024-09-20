@@ -42,4 +42,8 @@ vim.keymap.set('n', '<down>', ':resize -5<cr>', { silent = true })
 -- Don't send x deletes to numbered regs
 vim.keymap.set('n', 'x', '"_x')
 
+-- No more quit all
 vim.keymap.del('n', '<leader>qq')
+
+-- No more save, use for cmp instead
+vim.keymap.del('n', '<C-s>')

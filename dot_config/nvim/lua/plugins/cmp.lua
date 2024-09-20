@@ -1,12 +1,13 @@
 return {
   'hrsh7th/nvim-cmp',
   version = false, -- last release is way too old
-  event = 'InsertEnter',
+  event = { 'InsertEnter', 'CmdlineEnter' },
   dependencies = {
-    --  nvim-cmp does not ship with all sources by default. They are split into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    { 'garymjr/nvim-snippets', opts = { friendly_snippets = true }, dependencies = { 'rafamadriz/friendly-snippets' } },
+    { 'roobert/tailwindcss-colorizer-cmp.nvim', opts = {} },
   },
   opts = function()
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
@@ -27,21 +28,18 @@ return {
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        -- ['<CR>'] = LazyVim.cmp.confirm { select = auto_select },
-        -- ['<C-y>'] = LazyVim.cmp.confirm { select = true },
+        ['<C-s>'] = cmp.mapping.complete(),
         ['<C-y>'] = LazyVim.cmp.confirm { select = auto_select },
+        ['<C-e>'] = cmp.mapping.abort(),
         -- ['<S-CR>'] = LazyVim.cmp.confirm { behavior = cmp.ConfirmBehavior.Replace }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         -- ['<C-CR>'] = function(fallback)
         --   cmp.abort()
         --   fallback()
         -- end,
-        -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-        --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
-      sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'path' } }, { { name = 'buffer' } }, { name = 'snippets' }),
+      sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'path' }, { name = 'snippets' } }, { { name = 'buffer' } }),
       formatting = {
-        format = function(entry, item)
+        format = function(_, item)
           local icons = LazyVim.config.icons.kinds
           if icons[item.kind] then
             item.kind = icons[item.kind] .. item.kind
@@ -66,20 +64,19 @@ return {
           hl_group = 'CmpGhostText',
         },
       },
-      -- sorting = cmp.config.default.sorting,
-      -- sorting = {
-      --   comparators = {
-      --     cmp.config.compare.offset,
-      --     cmp.config.compare.exact,
-      --     cmp.config.compare.score,
-      --     cmp.config.compare.recently_used,
-      --     cmp.config.compare.locality,
-      --     cmp.config.compare.kind,
-      --     cmp.config.compare.sort_text,
-      --     cmp.config.compare.length,
-      --     cmp.config.compare.order,
-      --   },
-      -- },
+      sorting = {
+        comparators = {
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
     }
   end,
   main = 'lazyvim.util.cmp',
