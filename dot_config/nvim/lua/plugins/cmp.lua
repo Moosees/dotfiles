@@ -53,7 +53,9 @@ return {
         },
       }, { { name = 'buffer' } }),
       formatting = {
-        format = function(_, item)
+        format = function(entry, item)
+          item = require('tailwindcss-colorizer-cmp').formatter(entry, item)
+
           local icons = LazyVim.config.icons.kinds
           if icons[item.kind] then
             item.kind = icons[item.kind] .. item.kind
