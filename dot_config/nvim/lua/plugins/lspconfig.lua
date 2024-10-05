@@ -84,9 +84,6 @@ return {
       },
       -- LSP Server Settings
       servers = {
-        ts_ls = {
-          enabled = false,
-        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --    https://github.com/pmizio/typescript-tools.nvim
         lua_ls = {
