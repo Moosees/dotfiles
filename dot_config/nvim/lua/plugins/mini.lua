@@ -31,4 +31,5 @@ return {
 
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
+  { 'echasnovski/mini.pairs', enabled = false },
 }
