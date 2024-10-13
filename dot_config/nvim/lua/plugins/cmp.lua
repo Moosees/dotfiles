@@ -40,18 +40,24 @@ return {
       },
       sources = cmp.config.sources({
         { name = 'path' },
-        { name = 'snippets' },
+        { name = 'snippets', keyword_length = 2 },
         {
           name = 'nvim_lsp',
           keyword_length = 3,
-          -- entry_filter = function(entry)
-          --   -- return false for any kinds that should not show up
-          --   -- see end of file for map of kinds
-          --   vim.print(entry:get_kind())
-          --   return true
-          -- end,
+          entry_filter = function(entry)
+            -- return false for any kinds that should not show up
+            -- see end of file for map of kinds
+            -- vim.print(entry:get_kind())
+            -- return entry:get_kind() ~= 15
+            return true
+          end,
         },
-      }, { { name = 'buffer' } }),
+      }, {
+        {
+          name = 'buffer',
+          keyword_length = 3,
+        },
+      }),
       formatting = {
         format = function(entry, item)
           item = require('tailwindcss-colorizer-cmp').formatter(entry, item)
@@ -72,6 +78,13 @@ return {
             end
           end
 
+          item.menu = ({
+            path = 'P',
+            snippets = 'S',
+            nvim_lsp = 'L',
+            buffer = 'B',
+          })[entry.source.name]
+
           return item
         end,
       },
@@ -83,16 +96,16 @@ return {
       sorting = {
         -- https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/compare.lua
         comparators = {
-          cmp.config.compare.offset,
           cmp.config.compare.exact,
-          cmp.config.compare.recently_used,
-          cmp.config.compare.score,
           require('cmp-under-comparator').under,
+          -- cmp.config.compare.offset,
+          cmp.config.compare.recently_used,
           cmp.config.compare.scopes,
-          cmp.config.compare.kind,
+          cmp.config.compare.locality,
           cmp.config.compare.length,
+          cmp.config.compare.score,
+          cmp.config.compare.kind,
           -- cmp.config.compare.order,
-          -- cmp.config.compare.locality,
           -- cmp.config.compare.sort_text,
         },
       },
