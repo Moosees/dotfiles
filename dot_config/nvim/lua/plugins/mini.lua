@@ -1,14 +1,15 @@
+-- mini.ai
+-- Better Around/Inside textobjects
+-- Examples:
+--  - va)  - [V]isually select [A]round [)]paren
+--  - yinq - [Y]ank [I]nside [N]ext [']quote
+--  - ci'  - [C]hange [I]nside [']quote
 return {
-  'echasnovski/mini.nvim',
-  config = function()
-    -- Better Around/Inside textobjects
-    -- Examples:
-    --  - va)  - [V]isually select [A]round [)]paren
-    --  - yinq - [Y]ank [I]nside [N]ext [']quote
-    --  - ci'  - [C]hange [I]nside [']quote
-    require('mini.ai').setup { n_lines = 500 }
-
-    require('mini.surround').setup {
+  { 'echasnovski/mini.pairs', enabled = false },
+  {
+    'echasnovski/mini.surround',
+    version = false,
+    opts = {
       mappings = {
         add = 'gsa', -- Add surrounding in Normal and Visual modes
         delete = 'gsd', -- Delete surrounding
@@ -18,18 +19,11 @@ return {
         replace = 'gsr', -- Replace surrounding
         update_n_lines = 'gsn', -- Update `n_lines`
       },
-    }
-
-    local hipatterns = require 'mini.hipatterns'
-    hipatterns.setup {
-      highlighters = {
-        hex_color = hipatterns.gen_highlighter.hex_color(),
-      },
-    }
-
-    require('mini.icons').setup()
-
-    --  Check out: https://github.com/echasnovski/mini.nvim
-  end,
-  { 'echasnovski/mini.pairs', enabled = false },
+      -- How to search for surrounding (first inside current line, then inside
+      -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
+      -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
+      -- see `:h MiniSurround.config`.
+      search_method = 'cover_or_next',
+    },
+  },
 }
