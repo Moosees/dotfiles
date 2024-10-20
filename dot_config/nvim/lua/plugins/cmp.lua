@@ -3,10 +3,15 @@ return {
   version = false, -- last release is way too old
   event = { 'InsertEnter', 'CmdlineEnter' },
   dependencies = {
+    'folke/lazydev.nvim',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
-    { 'garymjr/nvim-snippets', opts = { friendly_snippets = true }, dependencies = { 'rafamadriz/friendly-snippets' } },
+    {
+      'garymjr/nvim-snippets',
+      opts = { friendly_snippets = true },
+      dependencies = { 'rafamadriz/friendly-snippets' },
+    },
     { 'roobert/tailwindcss-colorizer-cmp.nvim', opts = {} },
     'lukas-reineke/cmp-under-comparator',
   },
@@ -20,9 +25,11 @@ return {
       -- that you can configure. For example: auto_brackets = { "python" }
       auto_brackets = {}, -- configure any filetype to auto add brackets
       completion = {
-        completeopt = 'menu,menuone,noinsert' .. (auto_select and '' or ',noselect'),
+        completeopt = 'menu,menuone,noinsert'
+          .. (auto_select and '' or ',noselect'),
       },
-      preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+      preselect = auto_select and cmp.PreselectMode.Item
+        or cmp.PreselectMode.None,
       mapping = cmp.mapping.preset.insert {
         -- For an understanding of why these mappings were chosen, you will need to read `:help ins-completion`
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -51,6 +58,10 @@ return {
             -- return entry:get_kind() ~= 15
             return true
           end,
+        },
+        {
+          name = 'lazydev',
+          group_index = 0,
         },
         -- {
         --   name = 'html-css',
@@ -91,6 +102,7 @@ return {
             snippets = 'S',
             nvim_lsp = 'L',
             buffer = 'B',
+            lazydev = 'D',
           })[entry.source.name]
 
           return item

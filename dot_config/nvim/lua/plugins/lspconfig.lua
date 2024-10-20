@@ -6,25 +6,6 @@ return {
       'mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       { 'j-hui/fidget.nvim', opts = {} }, -- LSP status UI in bottom right
-      { -- replaces folke/neodev
-        'folke/lazydev.nvim',
-        ft = 'lua', -- only load on lua files
-        cmd = 'LazyDev',
-        opts = {
-          library = {
-            { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-            { path = 'LazyVim', words = { 'LazyVim' } },
-            { path = 'lazy.nvim', words = { 'LazyVim' } },
-          },
-        },
-      },
-      { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
-      {
-        'hrsh7th/nvim-cmp',
-        opts = function(_, opts)
-          table.insert(opts.sources, { name = 'lazydev', group_index = 0 })
-        end,
-      },
     },
     opts = {
       -- options for vim.diagnostic.config()
