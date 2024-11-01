@@ -5,7 +5,12 @@ return { -- Add indentation guides even on blank lines
   -- See `:help ibl`
   main = 'ibl',
   config = function()
-    vim.keymap.set('n', '<leader>uI', ':IBLToggle<cr>', { desc = 'Toggle indent-blankline' })
+    vim.keymap.set(
+      'n',
+      '<leader>uI',
+      ':IBLToggle<cr>',
+      { desc = 'Toggle indent-blankline' }
+    )
 
     local highlight = {
       'RainbowRed',
@@ -17,8 +22,13 @@ return { -- Add indentation guides even on blank lines
       'RainbowCyan',
     }
     require('ibl').setup {
-      scope = { enabled = true, show_start = true },
-      indent = { highlight = highlight, char = '▏' },
+      scope = {
+        enabled = true,
+        show_start = true,
+        highlight = highlight,
+        char = '▏',
+      },
+      -- indent = { highlight = highlight, char = '▏' },
     }
   end,
 }
