@@ -4,6 +4,12 @@ return {
     enabled = false,
   },
   {
+    'LazyVim/LazyVim',
+    opts = {
+      colorscheme = 'catppuccin',
+    },
+  },
+  {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000, -- Make sure to load this before all the other start plugins.
@@ -64,8 +70,6 @@ return {
           which_key = false,
         },
       }
-
-      vim.cmd.colorscheme 'catppuccin' -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     end,
   },
 }
