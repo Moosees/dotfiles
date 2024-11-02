@@ -1,35 +1,50 @@
-import = [
-  "~/.config/alacritty/catppuccin-mocha.toml",
-]
-
-live_config_reload = true
-
 [env]
 TERM = "xterm-256color"
 
 [window]
 decorations = "None"
 startup_mode = "Maximized"
-option_as_alt = "OnlyRight"
+option_as_alt = "Both"
 
 [font]
 normal = { family = "ZedMono Nerd Font", style = "Regular" }
-size = 11
+size = 12
 
 [keyboard]
 bindings = [
   {key = "ö", chars = "["},
   {key = "ö", mods = "Shift", chars = "{"},
-  {key = "ö", mods = "Option", chars = "ö"},
+  {key = "ö", mods = "Alt", chars = "ö"},
   {key = "ö", mods = "Command", chars = "Ö"},
   {key = "ä", chars = "]"},
   {key = "ä", mods = "Shift", chars = "}"},
-  {key = "ä", mods = "Option", chars = "ä"},
+  {key = "ä", mods = "Alt", chars = "ä"},
   {key = "ä", mods = "Command", chars = "Ä"},
   {key = "å", chars = "\\"},
   {key = "å", mods = "Shift", chars = "%"},
-  {key = "å", mods = "Option", chars = "å"},
+  {key = "å", mods = "Alt", chars = "å"},
   {key = "å", mods = "Command", chars = "Å"},
-  {key = "<", mods = "Option", chars = "/"},
+  {key = "<", mods = "Alt", chars = "/"},
+  {key = "§", chars = "~"},
+  {key = "§", mods = "Alt",  chars = "§"},
+  {key = "1", mods = "Alt", chars = "©"},
+  {key = "2", mods = "Alt", chars = "@"},
+  {key = "3", mods = "Alt", chars = "£"},
+  {key = "4", mods = "Alt", chars = "$"},
+  {key = "5", mods = "Alt", chars = "∞"},
+  {key = "6", mods = "Alt", chars = "§"},
+  {key = "7", mods = "Alt", chars = "|"},
+  # {key = "8", mods = "Alt", chars = "["},
+  # {key = "9", mods = "Alt", chars = "]"},
+  {key = "0", mods = "Alt", chars = "≈"},
+  {key = "+", mods = "Alt", chars = "±"},
+  # {key = "´", mods = "Alt", chars = "´"},
+]
+
+[general]
+
+live_config_reload = true
+import = [
+  "./catppuccin-mocha.toml",
 ]
 
