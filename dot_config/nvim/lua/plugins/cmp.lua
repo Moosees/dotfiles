@@ -45,8 +45,7 @@ return {
         --   fallback()
         -- end,
       },
-      sources = cmp.config.sources({
-        { name = 'path' },
+      sources = cmp.config.sources({ { name = 'path' } }, {
         { name = 'snippets', keyword_length = 2 },
         {
           name = 'nvim_lsp',
