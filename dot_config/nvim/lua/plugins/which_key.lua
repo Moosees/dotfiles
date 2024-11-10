@@ -15,28 +15,39 @@ return {
 
     wk.add {
       {
-        mode = { 'n' },
-        { '<leader>b', group = '[b]uffers' },
-        { '<leader>c', group = '[c]ode', mode = { 'n', 'v' } },
-        { '<leader>f', group = '[f]ind/file' },
-        { '<leader>g', group = '[g]it' },
-        { '<leader>h', group = 'Git [h]unk' },
-        { '<leader>p', group = '[p]ersitence' },
-        { '<leader>r', group = '[r]efactor' },
-        { '<leader>s', group = '[s]earch' },
-        { '<leader>u', group = '[u]til/toggle' },
-        { '<leader>w', group = '[w]indow' },
-        { '<leader>x', group = 'Fi[x] trouble' },
-        { '<leader><tab>', group = '[Tab]s' },
-        { 'gs', group = '[s]urround' },
-        { 'gc', group = '[c]omments' },
-        { 'gb', group = '[b]block comments' },
-      },
-      {
-        mode = { 'v' },
-        { '<leader>h', group = 'Git [h]unk' },
-        { 'gs', group = '[s]urround' },
-        { '<leader>s', group = '[s]earch' },
+        mode = { 'n', 'v' },
+        {
+          '<leader>b',
+          group = '[b]uffer',
+          icon = { icon = '󰓩  ', color = 'azure' },
+          expand = function()
+            return require('which-key.extras').expand.buf()
+          end,
+        },
+        {
+          '<leader>w',
+          group = '[w]indows',
+          proxy = '<c-w>',
+          icon = { icon = ' ', color = 'azure' },
+          expand = function()
+            return require('which-key.extras').expand.win()
+          end,
+        },
+        -- stylua: ignore start
+        { '<leader>c', group = '[c]ode', icon = { icon = '󰅩 ', color = 'azure' }, },
+        { '<leader>f', group = '[f]ind/file', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>g', group = '[g]it', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>gh', group = '[h]unks', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>p', group = '[p]ersitence', icon = { icon = '󰁯 ', color = 'azure' }, },
+        { '<leader>r', group = '[r]efactor', icon = { icon = '󰘦 ', color = 'azure' }, },
+        { '<leader>s', group = '[s]earch', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>u', group = '[u]i', icon = { icon = '󱗖 ', color = 'azure' }, },
+        { '<leader>x', group = 'Fi[x]/trouble', icon = { icon = '󱖫 ', color = 'azure' }, },
+        { '<leader><tab>', group = '[Tab]s', icon = { icon = ' ', color = 'azure' }, },
+        { 'gs', group = '[s]urround', icon = { icon = '󰅪 ', color = 'orange' } },
+        { 'gc', group = '[c]omments', icon = { icon = ' ', color = 'orange' } },
+        { 'gb', group = '[b]block comments', icon = { icon = ' ', color = 'orange' } },
+        { 'gx', desc = 'Open with system app', icon = { icon = ' ', color = 'cyan' } },
       },
     }
   end,
