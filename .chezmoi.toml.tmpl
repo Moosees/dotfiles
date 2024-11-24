@@ -1,6 +1,8 @@
 {{- $name := promptStringOnce . "name" "Name" -}}
 {{- $email := promptStringOnce . "email" "Email" -}}
+{{- $branch := promptStringOnce . "branch" "Default git branch" -}}
 
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
+    branch = {{ $branch | quote }}
