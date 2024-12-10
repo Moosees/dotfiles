@@ -94,7 +94,23 @@ return {
             },
           },
         },
+        stylelint_lsp = {
+          filetypes = { 'css', 'scss', 'less', 'sass' },
+          -- root_dir = require('lspconfig').util.root_pattern(
+          --   'package.json',
+          --   '.git'
+          -- ),
+          settings = {
+            stylelintplus = {
+              -- see available options in stylelint-lsp documentation
+            },
+          },
+          -- on_attach = function(client)
+          --   client.server_capabilities.document_formatting = false
+          -- end,
+        },
       },
+      setup = {},
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
     },
@@ -106,6 +122,8 @@ return {
         'stylua',
         -- 'shfmt',
         'emmet-language-server',
+        'stylelint',
+        'stylelint_lsp',
       },
     },
   },
