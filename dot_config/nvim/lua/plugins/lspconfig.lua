@@ -9,6 +9,7 @@ return {
     },
     opts = {
       -- options for vim.diagnostic.config()
+      ---@type vim.diagnostic.Opts
       diagnostics = {
         underline = true,
         update_in_insert = false,
@@ -55,12 +56,17 @@ return {
         formatting_options = nil,
         timeout_ms = nil,
       },
+      -- https://github.com/pmizio/typescript-tools.nvim
       -- LSP Server Settings
       servers = {
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --    https://github.com/pmizio/typescript-tools.nvim
         stylelint_lsp = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
+          root_dir = require('lspconfig').util.root_pattern(
+            'stylelint.config.*',
+            'package.json',
+            '.git'
+          ) or vim.fn.getcwd(),
           filetypes = { 'css', 'scss', 'less', 'sass' },
           -- root_dir = require('lspconfig').util.root_pattern(
           --   'package.json',
@@ -76,13 +82,24 @@ return {
           -- end,
         },
       },
-      setup = {},
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
+      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+      setup = {
+        -- example to setup with typescript.nvim
+        -- tsserver = function(_, opts)
+        --   require("typescript").setup({ server = opts })
+        --   return true
+        -- end,
+        -- Specify * to use this function as a fallback for any server
+        -- ["*"] = function(server, opts) end,
+      },
     },
   },
   {
     'williamboman/mason.nvim',
+    keys = { { '<leader>cm', false } },
+    -- keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
         'emmet-language-server',
