@@ -60,27 +60,23 @@ return {
       -- LSP Server Settings
       servers = {
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        stylelint_lsp = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          root_dir = require('lspconfig').util.root_pattern(
-            'stylelint.config.*',
-            'package.json',
-            '.git'
-          ) or vim.fn.getcwd(),
-          filetypes = { 'css', 'scss', 'less', 'sass' },
-          -- root_dir = require('lspconfig').util.root_pattern(
-          --   'package.json',
-          --   '.git'
-          -- ),
-          settings = {
-            stylelintplus = {
-              -- see available options in stylelint-lsp documentation
-            },
-          },
-          -- on_attach = function(client)
-          --   client.server_capabilities.document_formatting = false
-          -- end,
-        },
+        -- stylelint_lsp = {
+        --   -- mason = false, -- set to false if you don't want this server to be installed with mason
+        --   root_dir = require('lspconfig').util.root_pattern(
+        --     'stylelint.config.*',
+        --     'package.json',
+        --     '.git'
+        --   ) or vim.fn.getcwd(),
+        --   filetypes = { 'css', 'scss', 'less', 'sass' },
+        --   settings = {
+        --     stylelintplus = {
+        --       -- see available options in stylelint-lsp documentation
+        --     },
+        --   },
+        --   on_attach = function(client)
+        --     client.server_capabilities.document_formatting = false
+        --   end,
+        -- },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -104,7 +100,7 @@ return {
       ensure_installed = {
         'emmet-language-server',
         'stylelint',
-        'stylelint_lsp',
+        -- 'stylelint_lsp',
       },
     },
   },
