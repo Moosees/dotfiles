@@ -1,6 +1,7 @@
 return {
-  'Jezda1337/nvim-html-css',
-  enabled = false,
+  'ESSO0428/nvim-html-css',
+  -- 'Jezda1337/nvim-html-css',
+  -- enabled = false,
   lazy = true,
   dependencies = {
     'nvim-treesitter/nvim-treesitter',

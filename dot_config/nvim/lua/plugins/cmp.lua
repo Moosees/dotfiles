@@ -62,14 +62,24 @@ return {
           name = 'lazydev',
           group_index = 0,
         },
-        -- {
-        --   name = 'html-css',
-        --   option = {
-        --     style_sheets = {
-        --       'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
-        --     },
-        --   },
-        -- },
+        {
+          name = 'html-css',
+          option = {
+            enable_on = {
+              'html',
+              -- 'php',
+            }, -- set the file types you want the plugin to work on
+            enable_file_patterns = { '*.html' }, -- set the file patterns you want the plugin to work on file patterns (default is  *.html)
+            -- enable_file_patterns = { "*.html", "*.php" }
+            dir_to_exclude = { 'node_modules' },
+            file_extensions = { 'css', 'sass', 'less' }, -- set the local filetypes from which you want to derive classes
+            max_count = 20,
+            style_sheets = {
+              -- example of remote styles, only css no js for now
+              -- 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+            },
+          },
+        },
       }, {
         {
           name = 'buffer',
@@ -96,13 +106,17 @@ return {
             end
           end
 
-          item.menu = ({
-            path = 'P',
-            snippets = 'S',
-            nvim_lsp = 'L',
-            buffer = 'B',
-            lazydev = 'D',
-          })[entry.source.name]
+          if entry.source.name == 'html-css' then
+            item.menu = entry.completion_item.menu
+          else
+            item.menu = ({
+              path = 'P',
+              snippets = 'S',
+              nvim_lsp = 'L',
+              buffer = 'B',
+              lazydev = 'D',
+            })[entry.source.name]
+          end
 
           return item
         end,
