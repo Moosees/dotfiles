@@ -27,6 +27,7 @@ return {
           cmp = true,
           dashboard = true,
           flash = true,
+          fzf = true,
           gitsigns = true,
           illuminate = { enabled = true, lsp = false },
           indent_blankline = { enabled = true, colored_indent_levels = true },
@@ -60,10 +61,10 @@ return {
           noice = true,
           semantic_tokens = true,
           snacks = true,
-          telescope = {
-            enabled = true,
-            --style = 'nvchad'
-          },
+          -- telescope = {
+          --   enabled = true,
+          --   --style = 'nvchad'
+          -- },
           treesitter = true,
           treesitter_context = true,
           which_key = false,
