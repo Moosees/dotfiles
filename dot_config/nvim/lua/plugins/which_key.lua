@@ -11,6 +11,7 @@ return {
       -- hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', '^:', '^ ', '^call ', '^lua ' }, -- hide mapping boilerplate
       show_help = false, -- show a help message in the command line for using WhichKey
       show_keys = false, -- show the currently pressed key and its label as a message in the command line
+      preset = 'classic',
     }
 
     wk.add {
@@ -48,6 +49,13 @@ return {
         { 'gc', group = '[c]omments', icon = { icon = ' ', color = 'orange' } },
         { 'gb', group = '[b]block comments', icon = { icon = ' ', color = 'orange' } },
         { 'gx', desc = 'Open with system app', icon = { icon = ' ', color = 'cyan' } },
+        -- hidden keymaps
+        {'<leader>l', hidden = true},
+        {'<leader>L', hidden = true},
+        {'<leader>`', hidden = true},
+        {'<leader>-', hidden = true},
+        {'<leader>|', hidden = true},
+        {'<leader><space>', hidden = true},
       },
     }
   end,
