@@ -24,7 +24,8 @@ return {
         show_end_of_buffer = true,
         integrations = {
           -- aerial = true,
-          cmp = true,
+          blink_cmp = true,
+          -- cmp = true,
           dashboard = true,
           flash = true,
           fzf = true,
