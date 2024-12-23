@@ -19,7 +19,7 @@ return {
         mode = { 'n', 'v' },
         {
           '<leader>b',
-          group = '[b]uffer',
+          group = 'Buffer',
           icon = { icon = '󰓩  ', color = 'azure' },
           expand = function()
             return require('which-key.extras').expand.buf()
@@ -27,7 +27,7 @@ return {
         },
         {
           '<leader>w',
-          group = '[w]indows',
+          group = 'Windows',
           proxy = '<c-w>',
           icon = { icon = ' ', color = 'azure' },
           expand = function()
@@ -35,19 +35,20 @@ return {
           end,
         },
         -- stylua: ignore start
-        { '<leader>c', group = '[c]ode', icon = { icon = '󰅩 ', color = 'azure' }, },
-        { '<leader>f', group = '[f]ind/file', icon = { icon = ' ', color = 'azure' }, },
-        { '<leader>g', group = '[g]it', icon = { icon = ' ', color = 'azure' }, },
-        { '<leader>gh', group = '[h]unks', icon = { icon = ' ', color = 'azure' }, },
-        { '<leader>p', group = '[p]ersitence', icon = { icon = '󰁯 ', color = 'azure' }, },
-        { '<leader>r', group = '[r]efactor', icon = { icon = '󰘦 ', color = 'azure' }, },
-        { '<leader>s', group = '[s]earch', icon = { icon = ' ', color = 'azure' }, },
-        { '<leader>u', group = '[u]i', icon = { icon = '󱗖 ', color = 'azure' }, },
-        { '<leader>x', group = 'Fi[x]/trouble', icon = { icon = '󱖫 ', color = 'azure' }, },
-        { '<leader><tab>', group = '[Tab]s', icon = { icon = ' ', color = 'azure' }, },
-        { 'gs', group = '[s]urround', icon = { icon = '󰅪 ', color = 'orange' } },
-        { 'gc', group = '[c]omments', icon = { icon = ' ', color = 'orange' } },
-        { 'gb', group = '[b]block comments', icon = { icon = ' ', color = 'orange' } },
+        { '<leader>c', group = 'Code', icon = { icon = '󰅩 ', color = 'azure' }, },
+        { '<leader>d', group = 'Debug', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>f', group = 'File', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>g', group = 'Git', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>gh', group = 'Hunks', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>p', group = 'Persistence', icon = { icon = '󰁯 ', color = 'azure' }, },
+        { '<leader>r', group = 'Refactor', icon = { icon = '󰘦 ', color = 'azure' }, },
+        { '<leader>s', group = 'Search', icon = { icon = ' ', color = 'azure' }, },
+        { '<leader>u', group = 'Ui', icon = { icon = '󱗖 ', color = 'azure' }, },
+        { '<leader>x', group = 'Fix/trouble', icon = { icon = '󱖫 ', color = 'azure' }, },
+        { '<leader><tab>', group = 'Tabs', icon = { icon = ' ', color = 'azure' }, },
+        { 'gs', group = 'Surround', icon = { icon = '󰅪 ', color = 'orange' } },
+        { 'gc', group = 'Comments', icon = { icon = ' ', color = 'orange' } },
+        { 'gb', group = 'Block comments', icon = { icon = ' ', color = 'orange' } },
         { 'gx', desc = 'Open with system app', icon = { icon = ' ', color = 'cyan' } },
         -- hidden keymaps
         {'<leader>l', hidden = true},
