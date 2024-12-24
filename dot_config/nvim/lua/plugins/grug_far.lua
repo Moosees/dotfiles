@@ -15,7 +15,7 @@ return {
         }
       end,
       mode = { 'n', 'v' },
-      desc = '[s]earch and [R]eplace',
+      desc = 'Search and Replace',
     },
     -- {
     --   '<leader>sR',
