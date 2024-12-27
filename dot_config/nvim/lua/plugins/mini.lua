@@ -5,7 +5,6 @@
 --  - yinq - [Y]ank [I]nside [N]ext [']quote
 --  - ci'  - [C]hange [I]nside [']quote
 return {
-  { 'echasnovski/mini.pairs', enabled = false },
   {
     'echasnovski/mini.surround',
     version = false,
