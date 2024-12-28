@@ -28,23 +28,38 @@ return {
       mode = { 'n', 'v' },
     },
     {
-      'g<C-c>',
+      '<C-x>',
       function()
-        return M.dial(true, true)
+        return M.dial(false)
       end,
       expr = true,
-      desc = 'Increment',
+      desc = 'Decrement',
       mode = { 'n', 'v' },
     },
-    { '<C-a>', false, mode = { 'n', 'v' } },
-    { 'g<C-a>', false, mode = { 'n', 'v' } },
+    -- {
+    --   'g<C-c>',
+    --   function()
+    --     return M.dial(true, true)
+    --   end,
+    --   expr = true,
+    --   desc = 'Increment',
+    --   mode = { 'n', 'v' },
+    -- },
+    -- { '<C-a>', false, mode = { 'n', 'v' } },
+    -- { 'g<C-a>', false, mode = { 'n', 'v' } },
   },
   opts = function()
     local augend = require 'dial.augend'
 
     local logical_equals = augend.constant.new {
-      elements = { '==', '!=', '===', '!==' },
-      word = true,
+      elements = { '==', '!=' },
+      word = false,
+      cyclic = true,
+    }
+
+    local logical_equals_triple = augend.constant.new {
+      elements = { '===', '!==' },
+      word = false,
       cyclic = true,
     }
 
@@ -145,14 +160,15 @@ return {
           capitalized_boolean,
           augend.constant.alias.bool, -- boolean value (true <-> false)
           logical_alias,
-          logical_equals,
         },
         vue = {
+          logical_equals_triple,
           augend.constant.new { elements = { 'let', 'const' } },
           augend.hexcolor.new { case = 'lower' },
           augend.hexcolor.new { case = 'upper' },
         },
         typescript = {
+          logical_equals_triple,
           augend.constant.new { elements = { 'let', 'const' } },
         },
         css = {
@@ -170,6 +186,7 @@ return {
           augend.semver.alias.semver, -- versioning (v1.1.2)
         },
         lua = {
+          logical_equals,
           augend.constant.new {
             elements = { 'and', 'or' },
             word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
@@ -177,6 +194,7 @@ return {
           },
         },
         python = {
+          logical_equals,
           augend.constant.new {
             elements = { 'and', 'or' },
           },
