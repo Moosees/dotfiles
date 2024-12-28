@@ -8,7 +8,7 @@ return {
       },
     },
   },
-  lazy = true,
+  event = 'BufEnter',
   config = function()
     require('Comment').setup {
       -- Add a space b/w comment and the line
@@ -49,6 +49,7 @@ return {
         extra = true,
       },
       pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      post_hook = function() end,
     }
   end,
 }
