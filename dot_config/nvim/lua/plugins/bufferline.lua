@@ -3,39 +3,13 @@ return {
   event = 'VeryLazy',
   -- version = '*',
   dependencies = { 'nvim-tree/nvim-web-devicons', 'catppuccin/nvim' },
-  keys = function()
-    return {
-      {
-        '<leader>bp',
-        '<Cmd>BufferLineTogglePin<CR>',
-        desc = '[b]uffers toggle [p]in',
-      },
-      {
-        '<leader>bP',
-        '<Cmd>BufferLineGroupClose ungrouped<CR>',
-        desc = '[b]uffers delete non-[P]inned',
-      },
-      {
-        '<leader>bo',
-        '<Cmd>BufferLineCloseOthers<CR>',
-        desc = '[b]uffers delete [o]ther',
-      },
-      {
-        '<leader>br',
-        '<Cmd>BufferLineCloseRight<CR>',
-        desc = '[buffers] delete to the [r]ight',
-      },
-      {
-        '<leader>bl',
-        '<Cmd>BufferLineCloseLeft<CR>',
-        desc = '[b]uffers delete to the [l]eft',
-      },
-      { '<S-h>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
-      { '<S-l>', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
-      { '[b', '<cmd>BufferLineMovePrev<cr>', desc = 'Move [b]uffer prev' },
-      { ']b', '<cmd>BufferLineMoveNext<cr>', desc = 'Move [b]uffer next' },
-    }
-  end,
+  keys = {
+    {
+      '<leader>bo',
+      '<Cmd>BufferLineCloseOthers<CR>',
+      desc = 'Delete Other Buffers',
+    },
+  },
   opts = {
     options = {
       mode = 'buffers',

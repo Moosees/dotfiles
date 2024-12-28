@@ -11,7 +11,7 @@ return {
       -- hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', '^:', '^ ', '^call ', '^lua ' }, -- hide mapping boilerplate
       show_help = false, -- show a help message in the command line for using WhichKey
       show_keys = false, -- show the currently pressed key and its label as a message in the command line
-      preset = 'classic',
+      preset = 'helix',
     }
 
     wk.add {
@@ -57,6 +57,7 @@ return {
         {'<leader>-', hidden = true},
         {'<leader>|', hidden = true},
         {'<leader><space>', hidden = true},
+        {'g`', hidden = true},
       },
     }
   end,

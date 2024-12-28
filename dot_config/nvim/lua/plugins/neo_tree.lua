@@ -31,8 +31,8 @@ return {
   keys = function()
     return {
       { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
-      { '<leader>bn', ':Neotree buffers reveal<CR>', desc = '[b]uffers [n]eotree' },
-      { '<leader>gn', ':Neotree git_status reveal<CR>', desc = '[g]it [n]eotree' },
+      { '<leader>bn', ':Neotree buffers reveal<CR>', desc = 'Neotree buffers' },
+      { '<leader>gn', ':Neotree git_status reveal<CR>', desc = 'Neotree git' },
     }
   end,
   opts = {
